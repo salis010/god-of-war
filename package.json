@@ -1,0 +1,24 @@
+{
+  "name": "god-of-war",
+  "version": "1.0.0",
+  "description": "My first attempt at making slots, God of War is built in vanilla javascript using Canvas.",
+  "main": "Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salis010/god-of-war.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salis010/god-of-war/issues"
+  },
+  "homepage": "https://github.com/salis010/god-of-war#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
