@@ -1,7 +1,7 @@
 {
   "name": "god-of-war",
   "version": "1.0.0",
-  "description": "My first attempt at making slots, God of War is built in vanilla javascript using Canvas.",
+  "description": "God of War is built in vanilla javascript using Canvas.",
   "main": "Main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
