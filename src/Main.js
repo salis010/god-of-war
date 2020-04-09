@@ -1,3 +1,10 @@
+import { Reel } from './Reel'
+import { DisplayObject, sprite, buttons, button, text, render } from './SpriteClasses'
+import { makePointer } from './Pointer'
+import { PayTable } from './PayTable'
+import { CONSECUTIVE_NO_WINS, a, d, iconWidth, iconHeight } from './constants'
+import { WinningLine } from './WinningLine'
+
 ///////////////////////////////
 //Global Variables
 ///////////////////////////////
@@ -33,8 +40,6 @@ var shrineIconNames, shrineIconImages;
 var sunTzuIconNames, sunTzuIconImages;
 var skullWarriorIconNames, skullWarriorIconImages;
 //var currentIcon, drawIcon;    
-var iconWidth, iconHeight;
-var a, d;  //the acceleration/decelaration of the reel
 var spinTimeMin, spinTimeMax;
 var extraSpinTime; //the maximum extra spinning time one reel has over the reel to its left
 var spinning;   //use as boolean to trigger spinning
@@ -66,11 +71,14 @@ var panelToShow;
 //sound
 var armyComing, warHorn;
 var consecutiveNoWins;
+//other
+var firstScreen
+var pointer
 
 ///////////////////////////////
 //init function
 ///////////////////////////////
-function init() {
+export function init() {
         
     loadResources()
         .then(setup)
@@ -99,7 +107,7 @@ function loadResources() {
             image = new Image();
             iconImages.push(image);
             iconImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + iconNames[i] + ".png";
+            image.src = "src/images/" + iconNames[i] + ".png";
         }
         
         ////////////////////////////////////
@@ -113,7 +121,7 @@ function loadResources() {
             image = new Image();
             shrineIconImages.push(image);
             shrineIconImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + shrineIconNames[i] + ".png";
+            image.src = "src/images/" + shrineIconNames[i] + ".png";
         }                
         
         //load SunTzu images
@@ -124,7 +132,7 @@ function loadResources() {
             image = new Image();
             sunTzuIconImages.push(image);
             sunTzuIconImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + sunTzuIconNames[i] + ".png";
+            image.src = "src/images/" + sunTzuIconNames[i] + ".png";
         }
         
         //load SunTzu images
@@ -135,7 +143,7 @@ function loadResources() {
             image = new Image();
             skullWarriorIconImages.push(image);
             skullWarriorIconImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + skullWarriorIconNames[i] + ".png";
+            image.src = "src/images/" + skullWarriorIconNames[i] + ".png";
         }
        
         ///////////////////////////////////
@@ -148,7 +156,7 @@ function loadResources() {
             image = new Image();
             frameImages.push(image);
             frameImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + frameImageNames[i] + ".png";
+            image.src = "src/images/" + frameImageNames[i] + ".png";
         }
         
         ///////////////////////////////////
@@ -167,7 +175,7 @@ function loadResources() {
             image = new Image();
             buttonImages.push(image);
             buttonImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + buttonNames[i] + ".png";
+            image.src = "src/images/" + buttonNames[i] + ".png";
         }
         
         ////////////////////////////////////
@@ -180,7 +188,7 @@ function loadResources() {
             image = new Image();
             winningBorderImages.push(image);
             winningBorderImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + winningBorderNames[i] + ".png";
+            image.src = "src/images/" + winningBorderNames[i] + ".png";
         }
         
         ////////////////////////////////////
@@ -193,7 +201,7 @@ function loadResources() {
             image = new Image();
             infoPanelsImages.push(image);
             infoPanelsImages[i].addEventListener("load", loadHandler, false);
-            image.src = "images/" + infoPanelsImageNames[i] + ".png";
+            image.src = "src/images/" + infoPanelsImageNames[i] + ".png";
         }
         
         ///////////////////////////////////
@@ -206,7 +214,9 @@ function loadResources() {
         warHorn.addEventListener("canplaythrough", playSoundHandler, false);
         warHorn.src = "warHorn.wav";        
         
-        function playSoundHandler(event) {}
+        function playSoundHandler(event) {
+            warHorn.play();
+        }
         
         ///////////////////////////////////
         //loadHandler function
@@ -249,14 +259,6 @@ function setup() {
 
         ///////////////////////////////////////////////////////////////
         //set up the reels
-        
-        //set up icon size
-        iconWidth = 128;
-        iconHeight = 128;       
-        
-        //set up the acceleration and deceleration
-        a = 1;
-        d = -1;
         
         //set up the min and max spinning times
         spinTimeMin = 20;
@@ -432,8 +434,8 @@ function setup() {
             reverseFlash = false;
             updateFooter();            
             
-            if(consecutiveNoWins === 3) {            
-                armyComing.play();
+            if(consecutiveNoWins === CONSECUTIVE_NO_WINS) {            
+                armyComing.play().catch(err => console.log('Playing failed:', err));
                 consecutiveNoWins = 0;
             }
         };
@@ -1027,5 +1029,3 @@ function randomInt(min, max) {
         
     return Math.floor(Math.random() * max) + min;  
 }
-
-document.addEventListener("DOMContentLoaded", init, false);

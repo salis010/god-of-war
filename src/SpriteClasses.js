@@ -1,4 +1,4 @@
-let buttons = [];        
+export let buttons = [];        
 
 //////////////////////////////////////////
 //**********************************
@@ -6,7 +6,7 @@ let buttons = [];
 //**********************************
 ////////////////////////////////////
 
-class DisplayObject{
+export class DisplayObject{
     constructor() {
         
         //The sprite's position and size
@@ -619,7 +619,7 @@ class Text extends DisplayObject {
 }
 
 //A higher-level wrapper
-function text(content, font, fillStyle, x, y) {
+export function text(content, font, fillStyle, x, y) {
     let sprite = new Text(content, font, fillStyle, x, y);
     //stage.addChild(sprite);
     return sprite;
@@ -924,7 +924,7 @@ class Sprite extends DisplayObject {
 }
           
 //A higher-level wrapper
-function sprite(source, x, y) {
+export function sprite(source, x, y) {
     let sprite = new Sprite(source, x, y);
     //stage.addChild(sprite);
     return sprite;
@@ -943,7 +943,7 @@ class Button extends Sprite {
     }
 }
 
-function button(source, x, y) {
+export function button(source, x, y) {
     let sprite = new Button(source, x, y);
     //stage.addChild(sprite);
     return sprite;
@@ -955,7 +955,7 @@ function button(source, x, y) {
 //render function
 //**********************************
 ////////////////////////////////////
-function render(canvas, stage) {
+export function render(canvas, stage) {
     
     
     //Get a reference to the context

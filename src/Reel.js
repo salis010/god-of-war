@@ -1,10 +1,10 @@
-class Reel {
+import { a, d, iconWidth, iconHeight } from './constants'
+
+export class Reel {
     constructor() {
         this.x;
         this.y;
         this.v;
-        this.a;
-        this.d;
         this.spinTime;
         this.t = 0;        
         this.icons = [];
