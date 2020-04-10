@@ -130,7 +130,7 @@ function loadResources() {
             image.src = "src/media/images/" + sunTzuIconNames[i] + ".png"
         }
         
-        //load SunTzu images
+        //load Skull Warrior images
         skullWarriorIconNames = ["skull warrior0", "skull warrior1", "skull warrior2", "skull warrior3", "skull warrior4", "skull warrior5", "skull warrior6"] 
         skullWarriorIconImages = []
                 
