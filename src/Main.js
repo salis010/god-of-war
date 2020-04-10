@@ -2,7 +2,7 @@ import { Reel } from './Reel'
 import { DisplayObject, sprite, buttons, button, text, render } from './SpriteClasses'
 import { makePointer } from './Pointer'
 import { PayTable } from './PayTable'
-import { CONSECUTIVE_NO_WINS, a, d, iconWidth, iconHeight } from './constants'
+import { A, D, ICON_WIDTH, ICON_HEIGHT, CONSECUTIVE_NO_WINS } from './constants'
 import { WinningLine } from './WinningLine'
 
 ///////////////////////////////
@@ -23,10 +23,6 @@ let infoButton
 let infoButtonWidth, infoButtonHeight
 let coinUpButton, coinDownButton
 let coinButtonWidth, coinButtonHeight
-let linesInfoPanel
-let linesInfoPanelWidth, linesInfoPanelHeight
-let winPanel
-let winPanelWidth, winPanelHeight
 //Frame Images
 let frameImageNames, frameImages
 let frameLeft, frameRight, dragonLeft, dragonRight, god0, header
@@ -250,8 +246,8 @@ function setup() {
         canvasReels = document.createElement("canvas")
         canvasReels.style.background = "black"
         canvasReels.setAttribute("style", "display: none")        
-        canvasReels.width = 128 * 5
-        canvasReels.height = 128 * 3
+        canvasReels.width = ICON_WIDTH * 5
+        canvasReels.height = ICON_HEIGHT * 3
         document.body.appendChild(canvasReels)
 
         ctxReels = canvasReels.getContext("2d")
@@ -293,10 +289,10 @@ function setup() {
         
         //set up the initial x position of each reel
         reel1.x = 0
-        reel2.x = iconWidth
-        reel3.x = iconWidth * 2
-        reel4.x = iconWidth * 3
-        reel5.x = iconWidth * 4
+        reel2.x = ICON_WIDTH
+        reel3.x = ICON_WIDTH * 2
+        reel4.x = ICON_WIDTH * 3
+        reel5.x = ICON_WIDTH * 4
         
         //set up the initial y position of each reel
         reel1.y = 0
@@ -327,18 +323,18 @@ function setup() {
         reel5.v = 0 
         
         //setup the acceleration of each reel
-        reel1.a = a
-        reel2.a = a
-        reel3.a = a
-        reel4.a = a
-        reel5.a = a 
+        reel1.a = A
+        reel2.a = A
+        reel3.a = A
+        reel4.a = A
+        reel5.a = A 
         
         //setup the deceleration of each reel
-        reel1.d = d
-        reel2.d = d
-        reel3.d = d
-        reel4.d = d
-        reel5.d = d 
+        reel1.d = D
+        reel2.d = D
+        reel3.d = D
+        reel4.d = D
+        reel5.d = D 
         
         //game status
         firstScreen = true
@@ -373,8 +369,8 @@ function setup() {
         /////////////////////////////////
         //Frame Images (header, sides and control panel)
         god0 = sprite(frameImages[4], canvasMain.width / 2 - 64, 0)
-        god0.width = iconWidth
-        god0.height = iconWidth
+        god0.width = ICON_WIDTH
+        god0.height = ICON_HEIGHT
         stage.addChild(god0)
         
         header = sprite(frameImages[5], 0, 0)        
@@ -689,10 +685,10 @@ function gameLoop() {
         //draw a border around each icon of the winning line currently being displayed
         for(let x = 0; x < winningLines[showWinningLine].line.length; x++)
             ctxMain.drawImage(winningBorderImages[0], 
-                leftBorder + (x * iconWidth),
-                yHeader + (winningLines[showWinningLine].line[x] * iconHeight),
-                iconWidth,
-                iconHeight)                      
+                leftBorder + (x * ICON_WIDTH),
+                yHeader + (winningLines[showWinningLine].line[x] * ICON_HEIGHT),
+                ICON_WIDTH,
+                ICON_HEIGHT)                      
         
         if(winningLines[showWinningLine].combination === 3)
             winAmountY = winningLines[showWinningLine].line[2]
@@ -703,10 +699,10 @@ function gameLoop() {
         
         if(winningLines[showWinningLine].prize < 100)
             ctxMain.fillText("€" + winningLines[showWinningLine].prize.toFixed(2), leftBorder + canvasReels.width + 20, 
-                yHeader + (winAmountY * iconHeight) + (iconHeight / 2) + 8)
+                yHeader + (winAmountY * ICON_HEIGHT) + ( ICON_HEIGHT / 2) + 8)
         else
             ctxMain.fillText("€" + winningLines[showWinningLine].prize.toFixed(0), leftBorder + canvasReels.width + 20, 
-                yHeader + (winAmountY * iconHeight) + (iconHeight / 2) + 8)
+                yHeader + (winAmountY *  ICON_HEIGHT) + ( ICON_HEIGHT / 2) + 8)
         
          
        //parse through each winning line at the set interval of showWinningLinePeriod
@@ -820,15 +816,15 @@ function drawReel(reel) {
         
         ctxReels.drawImage(iconImages[reel.icons[reel.drawIcon]], 
             reel.x,
-            reel.y + (i * iconHeight),
-            iconWidth,
-            iconHeight)                       
+            reel.y + (i * ICON_HEIGHT),
+            ICON_WIDTH,
+            ICON_HEIGHT)                       
     } 
     ctxMain.drawImage(canvasReels, leftBorder, yHeader)
 
-    if(reel.y >= iconHeight) {
+    if(reel.y >=  ICON_HEIGHT) {
     
-        reel.y -= iconHeight
+        reel.y -=  ICON_HEIGHT
 
         reel.currentIcon--
 
@@ -1016,9 +1012,9 @@ function flashIcons() {
 function drawIcon(image, reel, i) {
     ctxMain.drawImage(image, 
         leftBorder + reel.x, 
-        yHeader + (i * iconHeight),
-        iconWidth,
-        iconHeight)                
+        yHeader + (i *  ICON_HEIGHT),
+        ICON_WIDTH,
+        ICON_HEIGHT)                
 }
 
 ///////////////////////////////
