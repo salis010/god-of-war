@@ -1,4 +1,4 @@
-import { A, D, ICON_HEIGHT } from './constants'
+import { A, D, ICON_HEIGHT } from './constants/index'
 
 export class Reel {
     constructor() {

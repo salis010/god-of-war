@@ -1,8 +1,8 @@
 import { Reel } from './Reel'
 import { DisplayObject, sprite, buttons, button, text, render } from './SpriteClasses'
 import { makePointer } from './Pointer'
-import { PayTable } from './PayTable'
-import { A, D, ICON_WIDTH, ICON_HEIGHT, CONSECUTIVE_NO_WINS } from './constants'
+import { payTable } from './constants/PayTable'
+import { A, D, ICON_WIDTH, ICON_HEIGHT, CONSECUTIVE_NO_WINS } from './constants/index'
 import { WinningLine } from './WinningLine'
 
 ///////////////////////////////
@@ -45,7 +45,6 @@ let textBet, textBalance, textTotalWinningLines, textWin
 let yFooter, footerHeight
 let footerFont, footerFillStyle
 //bet settlement
-let payTable
 let winningLines
 let showWinningLines
 let winningBorderNames, winningBorderImages
@@ -526,7 +525,6 @@ function setup() {
         
         /////////////////////////////////
         //bet settlement
-        payTable = new PayTable()
         winningLines = []
         showWinningLine = 0
         showWinningLinePeriod = 50
