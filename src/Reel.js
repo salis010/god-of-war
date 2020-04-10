@@ -1,4 +1,4 @@
-import { a, d, iconWidth, iconHeight } from './constants'
+import { A, D, ICON_HEIGHT } from './constants'
 
 export class Reel {
     constructor() {
@@ -32,7 +32,7 @@ export class Reel {
                 this.t++
 
                 if(this.v < 100)            //control maximum spinning speed
-                    this.v += a
+                    this.v += A
 
                 this.y += this.v
                 
@@ -40,12 +40,12 @@ export class Reel {
 
                 if(this.v > 5) {             
 
-                    this.v += d             //decelerate with the decelaration factor
+                    this.v += D             //decelerate with the decelaration factor
                     this.y += this.v
 
                 } else {                //decelerate finely to a positive stop
                     if(this.y > 0) {
-                        if(this.y < iconHeight / 2)
+                        if(this.y < ICON_HEIGHT / 2)
                             this.y += 16                                        
                         
                         else {
