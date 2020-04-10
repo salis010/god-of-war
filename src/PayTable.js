@@ -1,4 +1,4 @@
-class PayTable {
+export class PayTable {
     constructor() {    
         
         this.combination3 = {

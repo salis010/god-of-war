@@ -1,4 +1,4 @@
-function makePointer(element, scale = 1) {
+export function makePointer(element, scale = 1) {
     
     let pointer = {
         element: element,
