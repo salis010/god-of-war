@@ -102,7 +102,7 @@ function loadResources() {
             image = new Image()
             iconImages.push(image)
             iconImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + iconNames[i] + ".png"
+            image.src = "src/media/images/" + iconNames[i] + ".png"
         }
         
         ////////////////////////////////////
@@ -116,7 +116,7 @@ function loadResources() {
             image = new Image()
             shrineIconImages.push(image)
             shrineIconImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + shrineIconNames[i] + ".png"
+            image.src = "src/media/images/" + shrineIconNames[i] + ".png"
         }                
         
         //load SunTzu images
@@ -127,7 +127,7 @@ function loadResources() {
             image = new Image()
             sunTzuIconImages.push(image)
             sunTzuIconImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + sunTzuIconNames[i] + ".png"
+            image.src = "src/media/images/" + sunTzuIconNames[i] + ".png"
         }
         
         //load SunTzu images
@@ -138,7 +138,7 @@ function loadResources() {
             image = new Image()
             skullWarriorIconImages.push(image)
             skullWarriorIconImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + skullWarriorIconNames[i] + ".png"
+            image.src = "src/media/images/" + skullWarriorIconNames[i] + ".png"
         }
        
         ///////////////////////////////////
@@ -151,7 +151,7 @@ function loadResources() {
             image = new Image()
             frameImages.push(image)
             frameImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + frameImageNames[i] + ".png"
+            image.src = "src/media/images/" + frameImageNames[i] + ".png"
         }
         
         ///////////////////////////////////
@@ -170,7 +170,7 @@ function loadResources() {
             image = new Image()
             buttonImages.push(image)
             buttonImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + buttonNames[i] + ".png"
+            image.src = "src/media/images/" + buttonNames[i] + ".png"
         }
         
         ////////////////////////////////////
@@ -183,7 +183,7 @@ function loadResources() {
             image = new Image()
             winningBorderImages.push(image)
             winningBorderImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + winningBorderNames[i] + ".png"
+            image.src = "src/media/images/" + winningBorderNames[i] + ".png"
         }
         
         ////////////////////////////////////
@@ -196,22 +196,20 @@ function loadResources() {
             image = new Image()
             infoPanelsImages.push(image)
             infoPanelsImages[i].addEventListener("load", loadHandler, false)
-            image.src = "src/images/" + infoPanelsImageNames[i] + ".png"
+            image.src = "src/media/images/" + infoPanelsImageNames[i] + ".png"
         }
         
         ///////////////////////////////////
         //sound
         armyComing = new Audio()
         armyComing.addEventListener("canplaythrough", playSoundHandler, false)
-        armyComing.src = "armyComing.wav"
+        armyComing.src = "src/media/sound/armyComing.wav"
         
         warHorn = new Audio()
         warHorn.addEventListener("canplaythrough", playSoundHandler, false)
-        warHorn.src = "warHorn.wav"        
+        warHorn.src = "src/media/sound/warHorn.wav"        
         
-        function playSoundHandler(event) {
-            warHorn.play()
-        }
+        function playSoundHandler(event) {}
         
         ///////////////////////////////////
         //loadHandler function
