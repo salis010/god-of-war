@@ -1,4 +1,3 @@
-//set up icon size
 export const ICON_WIDTH = 128
 export const ICON_HEIGHT = 128       
 export const A = 1
