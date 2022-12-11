@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/salis010/god-of-war#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
